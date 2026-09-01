@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('partials/head') %>
+</head>
+<body>
+  <%- include('partials/navbar') %>
+
+  <div class="container py-4">
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
+      <h2 class="fw-semibold mb-0">Categories</h2>
+      <a href="/categories/new" class="btn btn-primary">
+        <i class="bi bi-plus-lg me-1"></i>Add Category
+      </a>
+    </div>
+
+    <% if (success) { %>
+      <div class="alert alert-success"><%= success %></div>
+    <% } %>
+    <% if (error) { %>
+      <div class="alert alert-danger"><%= error %></div>
+    <% } %>
+
+    <% if (!categories || categories.length === 0) { %>
+      <div class="empty-state text-center py-5">
+        <i class="bi bi-tags display-4 text-muted"></i>
+        <p class="text-muted mt-3 mb-3">No categories yet.</p>
+        <a href="/categories/new" class="btn btn-primary">Create your first category</a>
+      </div>
+    <% } else { %>
+      <div class="card shadow-sm">
+        <div class="table-responsive">
+          <table class="table table-hover mb-0 align-middle">
+            <thead class="table-light">
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th class="text-end">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% categories.forEach(function(cat) { %>
+                <tr>
+                  <td class="fw-semibold"><%= cat.name %></td>
+                  <td class="text-muted"><%= cat.description || '—' %></td>
+                  <td class="text-end">
+                    <a href="/categories/<%= cat._id %>/edit" class="btn btn-sm btn-outline-primary me-1">
+                      <i class="bi bi-pencil-square"></i>
+                    </a>
+                    <form
+                      action="/categories/<%= cat._id %>/delete"
+                      method="POST"
+                      class="d-inline"
+                      onsubmit="return confirm('Delete this category? Tasks using it will keep it unset.');"
+                    >
+                      <button type="submit" class="btn btn-sm btn-outline-danger">
+                        <i class="bi bi-trash"></i>
+                      </button>
+                    </form>
+                  </td>
+                </tr>
+              <% }); %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    <% } %>
+  </div>
+
+  <%- include('partials/scripts') %>
+</body>
+</html>

@@ -1,0 +1,74 @@
+:root {
+  --brand-color: #4f46e5;
+  --brand-color-dark: #3730a3;
+}
+
+body {
+  background-color: #f5f6fa;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+.app-navbar {
+  background: linear-gradient(135deg, var(--brand-color), var(--brand-color-dark));
+}
+
+.auth-wrapper {
+  min-height: calc(100vh - 76px);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  border: none;
+  border-radius: 12px;
+}
+
+.card {
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.task-card {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.task-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1) !important;
+}
+
+.empty-state {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px dashed #d0d3e0;
+}
+
+.navbar-brand i {
+  color: #fff;
+}
+
+.btn-primary {
+  background-color: var(--brand-color);
+  border-color: var(--brand-color);
+}
+
+.btn-primary:hover {
+  background-color: var(--brand-color-dark);
+  border-color: var(--brand-color-dark);
+}
+
+.btn-outline-primary {
+  color: var(--brand-color);
+  border-color: var(--brand-color);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--brand-color);
+  border-color: var(--brand-color);
+}
+
+@media (max-width: 576px) {
+  .auth-card {
+    margin: 1rem;
+  }
+}

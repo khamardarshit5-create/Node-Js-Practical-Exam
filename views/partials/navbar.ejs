@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg navbar-dark app-navbar">
+  <div class="container">
+    <a class="navbar-brand fw-semibold" href="/tasks">
+      <i class="bi bi-check2-square me-2"></i>Task Manager
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <% if (typeof currentUser !== 'undefined' && currentUser) { %>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="/tasks">My Tasks</a>
+          </li>
+          <% if (currentUser.role === 'admin') { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/tasks">All User Tasks</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/categories">Categories</a>
+            </li>
+          <% } %>
+          <li class="nav-item">
+            <a class="nav-link" href="/tasks/new">Add Task</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item me-lg-3">
+            <span class="navbar-text small text-light-emphasis">
+              Signed in as <strong><%= currentUser.username %></strong>
+              <span class="badge bg-light text-dark ms-1 text-uppercase"><%= currentUser.role %></span>
+            </span>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-outline-light btn-sm" href="/logout">Logout</a>
+          </li>
+        </ul>
+      <% } else { %>
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/register">Register</a>
+          </li>
+        </ul>
+      <% } %>
+    </div>
+  </div>
+</nav>
