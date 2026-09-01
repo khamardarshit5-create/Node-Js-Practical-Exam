@@ -50,7 +50,6 @@ cp .env.example .env
 ```
 PORT=3000
 NODE_ENV=development
-MONGODB_URI=mongodb://127.0.0.1:27017/task_manager
 JWT_SECRET=change_this_secret
 JWT_EXPIRES_IN=1d
 
